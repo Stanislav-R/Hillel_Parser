@@ -6,7 +6,7 @@ import requests
 from parsers.bank import Bank
 
 
-class KiGroupParser(Bank):
+class KitGroupParser(Bank):
 
     def __init__(self, currencies: List, bank_url: str, bank_id: int):
         self.__currencies = {
@@ -67,5 +67,5 @@ if __name__ == '__main__':
     currencies = db.get_currencies()
     bank_id, bank_name, bank_url = db.get_bank_by_id(4)
     db.close()
-    parser = KiGroupParser(currencies, bank_url, bank_id)
+    parser = KitGroupParser(currencies, bank_url, bank_id)
     pprint(parser.get_currency_rate())

@@ -22,7 +22,7 @@ class RaiffeisenBankAvalParser(Bank):
 
     def __get_html(self):
         path = 'scripts/chromedriver'
-        
+
         display = Display(visible=False, size=(800, 800))
         display.start()
 

@@ -45,7 +45,7 @@ class DbUtils:
         return 'No connect'
 
     def get_bank_by_id(self, bank: (int, str) = None):
-        sql = f'''select id, full_name, url 
+        sql = f'''select id, full_name, url
             from currency_statistics.bank
             where is_enabled is true
             and id = {bank};'''
@@ -55,8 +55,8 @@ class DbUtils:
 
     def get_bank_by_name(self, bank: str):
         sql = f'''select id, full_name, url
-            from currency_statistics.bank 
-            where is_enabled is true 
+            from currency_statistics.bank
+            where is_enabled is true
             and full_name = '{bank}';'''
 
         self.__cursor.execute(sql)
@@ -64,7 +64,7 @@ class DbUtils:
 
     def get_banks(self):
         sql = f'''select id, full_name, url
-            from currency_statistics.bank 
+            from currency_statistics.bank
             where is_enabled is true
             order by id;'''
 
@@ -77,8 +77,7 @@ class DbUtils:
             select id, international_name, current_name
             from currency_statistics.currency
             where is_enabled is true
-            and lower(current_name) = lower('{currency_name}');
-        '''
+            and lower(current_name) = lower('{currency_name}');'''
 
         self.__cursor.execute(sql)
         return self.__cursor.fetchone()
@@ -87,8 +86,7 @@ class DbUtils:
         sql = f'''
             select id, international_name, current_name
             from currency_statistics.currency
-            where is_enabled is true;
-        '''
+            where is_enabled is true;'''
 
         self.__cursor.execute(sql)
         return self.__cursor.fetchall()
@@ -97,8 +95,7 @@ class DbUtils:
         sql = f'''
             insert into currency_statistics.rate (bank_id, currency_id, sale, purchase)
             values ({bank_id}, {currency_id}, {sale}, {purchase})
-            returning id;
-        '''
+            returning id;'''
 
         self.__cursor.execute(sql)
 
